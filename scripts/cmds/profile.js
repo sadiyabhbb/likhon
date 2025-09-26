@@ -1,33 +1,39 @@
+async function onStart({ event, message, args, usersData }) {
+  const a = async (id) => await usersData.getAvatarUrl(id);
+  let b, c;
+
+  try {
+    if (event.type === "message_reply") {
+      c = event.messageReply.senderID;
+    } else if (args.length && args.join(" ").includes("facebook.com")) {
+      const d = args.join(" ").match(/(\d+)/);
+      if (!d) throw new Error("❌ Invalid Facebook URL");
+      c = d[0];
+    } else if (Object.keys(event.mentions).length) {
+      c = Object.keys(event.mentions)[0];
+    } else {
+      c = event.senderID;
+    }
+
+    b = await a(c);
+    const e = await global.utils.getStreamFromURL(b);
+    message.reply({ attachment: e });
+  } catch (f) {
+    message.reply(`⚠️ Failed: ${f.message}`);
+  }
+}
+
 module.exports = {
   config: {
-    name: "profile",
-    aliases: ["pfp", "pp"],
-    version: "1.1",
-    author: "dipto",
+    name: "pp",
+    aliases: ["profilepic", "dp"],
+    version: "0.0.1",
+    author: "ArYAN",
     countDown: 5,
     role: 0,
-    description: "PROFILE image",
-    category: "image",
-    guide: { en: "{pn} @tag or userID or reply to a message or provide a Facebook URL" }
+    description: "Fetch user profile picture",
+    category: "media",
+    guide: { en: "{pn} @mention | userID | reply | Facebook URL" }
   },
-  onStart: async function ({ event, message, usersData, args }) {
-    const getAvatarUrl = async (uid) => await usersData.getAvatarUrl(uid);
-    const uid = Object.keys(event.mentions)[0] || args[0] || event.senderID;
-    let avt;
-
-    try {
-      if (event.type === "message_reply") {
-        avt = await getAvatarUrl(event.messageReply.senderID);
-      } else if (args.join(" ").includes("facebook.com")) {
-        const match = args.join(" ").match(/(\d+)/);
-        if (match) avt = await getAvatarUrl(match[0]);
-        else throw new Error("Invalid Facebook URL.");
-      } else {
-        avt = await getAvatarUrl(uid);
-      }
-      message.reply({ body: "", attachment: await global.utils.getStreamFromURL(avt) });
-    } catch (error) {
-      message.reply(`⚠️ Error: ${error.message}`);
-    }
-  }
+  onStart
 };
