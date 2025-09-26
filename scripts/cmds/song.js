@@ -11,6 +11,7 @@ async function getStream(url) {
 module.exports = {
   config: {
     name: "song",
+    aliases: ["sing"],
     version: "0.0.1",
     author: "ArYAN",
     countDown: 5,
