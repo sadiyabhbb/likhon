@@ -1,47 +1,35 @@
-const axios = require("axios");
-const fs = require("fs-extra");
+const a = require("axios");
+const b = require("fs-extra");
+
+async function onStart({ api, event, message }) {
+  try {
+    const c = event.messageReply?.attachments?.[0];
+    if (!c) return message.reply("⚠️ Reply to a video to convert it.");
+    if (c.type !== "video") return message.reply("❌ Only video files are supported.");
+
+    const d = (await a.get(c.url, { responseType: "arraybuffer" })).data;
+    const e = __dirname + "/cache/v2a.m4a";
+
+    if (!b.existsSync(__dirname + "/cache")) b.mkdirSync(__dirname + "/cache");
+    b.writeFileSync(e, Buffer.from(d));
+
+    api.sendMessage({ attachment: b.createReadStream(e) }, event.threadID, event.messageID);
+  } catch (f) {
+    message.reply("❌ Error: " + f.message);
+  }
+}
+
 module.exports = {
   config: {
     name: "v2a",
-    aliases: ["video2audio"],
-    description: "Convert Video to audio ",
-    version: "1.2",
-    author: "dipto",
-    countDown: 20,
-   description: {
-      en: "Reply to a video"
-     },
+    aliases: ["video2audio", "mp3"],
+    version: "2.0",
+    author: "ArYAN",
+    countDown: 15,
+    role: 0,
+    description: "Convert a replied video to audio",
     category: "media",
-    guide: {
-      en: "{p}{n}"
-    }
-
+    guide: { en: "{p}{n}" }
   },
-  onStart: async function ({ api, event, args, message }) {
-    try {
-      if (!event.messageReply || !event.messageReply.attachments || event.messageReply.attachments.length === 0) {
-        message.reply("Please reply to a video message to convert it to audio.");
-        return;
-      }
-
-      const dipto = event.messageReply.attachments[0];
-      if (dipto.type !== "video") {
-        message.reply("The replied content must be a video.");
-        return;
-      }
-      const { data } = await axios.get(dipto.url, { method: 'GET', responseType: 'arraybuffer' });
- const path = __dirname + `/cache/dvia.m4a`
-            if(!fs.existsSync(path)){
-        fs.mkdir(__dirname + '/cache');
-      }
-      fs.writeFileSync(path, Buffer.from(data, 'utf-8'));
-
-      const audioReadStream = fs.createReadStream(path);
-      const msg = { body: "", attachment: [audioReadStream] };
-      api.sendMessage(msg, event.threadID, event.messageID);
-    } catch (e) {
-      console.log(e);
-message.reply(e.message)
-    }
-  },
+  onStart
 };
