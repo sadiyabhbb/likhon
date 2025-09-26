@@ -1,0 +1,10 @@
+language = "nodejs"
+run = "npm start"
+modules = ["nodejs-20"]
+
+[agent]
+expertMode = true
+
+[[ports]]
+localPort = 62040
+externalPort = 80
