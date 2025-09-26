@@ -2,7 +2,8 @@
   "timeZone": "Asia/Dhaka",
   "prefix": "!",
   "language": "en",
-  "api": "",
+  "api": "http://65.109.80.126:20409/aryan",
+  "baby": "https://nix-baby-apis.vercel.app",
   "nickNameBot": "Goat-Bot-V2",
   "database": {
     "type": "sqlite",
