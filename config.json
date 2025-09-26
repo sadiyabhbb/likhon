@@ -1,68 +1,19 @@
 {
-  "facebookAccount": {
-    "email": "",
-    "password": "",
-    "2FASecret": "",
-    "i_user": "",
-    "proxy": null,
-    "userAgent": "Mozilla/5.0 (Linux; Android 12; M2102J20SG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Mobile Safari/537.36",
-    "intervalGetNewCookie": 1440,
-    "notes": "time the system automatically retrieves new cookies from email/password, unit is minute, if you set null, the system will not automatically retrieve new cookies, it saves you from having to manually change your cookie every time it expires. recommended set to 1440 (1day) or 4320 (3day).TO BE ABLE TO USE THIS FEATURE YOU NEED TO ENTER THE ACCOUNT PASSWORD ABOVE"
-  },
-  "antiInbox": false,
+  "timeZone": "Asia/Dhaka",
+  "prefix": "!",
   "language": "en",
-  "notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
-  "nickNameBot": "GoatBot",
-  "prefix": "-",
-  "api": "https://www.noobs-api.rf.gd/dipto",
-  "approval": false,
-  "reactBy": {
-    "delete": [
-      "😡",
-      "😾"
-    ],
-    "kick": [
-      "🦶",
-      "⚠️"
-    ]
-  },
-  "adminOnly": {
-    "enable": false,
-    "ignoreCommand": []
-  },
-  "adminBot": [
-    "61552258402755"
-  ],
-  "mainAdmin": [
-    "61552258402755"
-  ],
-  "whiteListMode": {
-    "enable": true,
-    "whiteListIds": [
-      "61552258402755",
-      "100044327656712"
-    ],
-    "notes": "if you enable this feature, only the ids in the whiteListIds list can use the bot"
-  },
-  "whiteListModeThread": {
-    "enable": true,
-    "whiteListThreadIds": [
-      "24974557655524033"
-    ],
-    "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
-    "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
-  },
+  "api": "",
+  "nickNameBot": "Goat-Bot-V2",
   "database": {
     "type": "sqlite",
     "uriMongodb": "",
+    "notes": "(1) type selects 'json' or 'sqlite' or 'mongodb'. If you choose mongodb, enter uri connect mongodb in the uriMongodb section, instructions to get uri connect mongodb at: https://youtu.be/z1f9urHW5xY. I recommend using 'mongodb' or 'sqlite', json is not recommended because it is not stable. (2) when you set autoSyncWhenStart to true, the bot will automatically synchronize the data in the database when starting the bot, this will make the bot start slower. (3) when you set autoRefreshThreadInfoFirstTime to true, the bot will automatically refresh the thread information when get first message from the thread since starting the bot",
     "autoSyncWhenStart": false,
-    "autoRefreshThreadInfoFirstTime": true,
-    "notes": "(1) type selects 'json' or 'sqlite' or 'mongodb'. If you choose mongodb, enter uri connect mongodb in the uriMongodb section, instructions to get uri connect mongodb at: https://youtu.be/z1f9urHW5xY. I recommend using 'mongodb' or 'sqlite', json is not recommended because it is not stable. (2) when you set autoSyncWhenStart to true, the bot will automatically synchronize the data in the database when starting the bot, this will make the bot start slower. (3) when you set autoRefreshThreadInfoFirstTime to true, the bot will automatically refresh the thread information when get first message from the thread since starting the bot"
+    "autoRefreshThreadInfoFirstTime": true
   },
-  "timeZone": "Asia/Dhaka",
   "credentials": {
     "gmailAccount": {
-      "email": "fariasdipto@gmail.com",
+      "email": "itzaryan.biz@gmail.com",
       "clientId": "356551796908-109qeba7nv0e30u2c7o22gr9podqsiim.apps.googleusercontent.com",
       "clientSecret": "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",
       "refreshToken": "1//04otrr7tUfUAFCgYIARAAGAQSNwF-L9IrnanDeaer7kPniPX_EdWPKNnf4_z7ONCUcR5Jp6_kcSXWKAND0inf-n1Yv1LRryIKNhY"
@@ -72,6 +23,54 @@
       "secretKey": ""
     }
   },
+  "facebookAccount": {
+    "i_user": "",
+    "userAgent": "Mozilla/5.0 (Linux; Android 12; M2102J20SG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Mobile Safari/537.36",
+    "password": "",
+    "email": "",
+    "2FASecret": "",
+    "proxy": null,
+    "notes": "time the system automatically retrieves new cookies from email/password, unit is minute, if you set null, the system will not automatically retrieve new cookies, it saves you from having to manually change your cookie every time it expires. recommended set to 1440 (1day) or 4320 (3day).TO BE ABLE TO USE THIS FEATURE YOU NEED TO ENTER THE ACCOUNT PASSWORD ABOVE",
+    "intervalGetNewCookie": 1440
+  },
+  "adminBot": [
+    "100001611578438"
+  ],
+  "mainAdmin": [
+    "100001611578438"
+  ],
+  "adminOnly": {
+    "enable": false,
+    "ignoreCommand": []
+  },
+  "approval": false,
+  "reactBy": {
+    "delete": [
+      "😠",
+      "😾"
+    ],
+    "kick": [
+      "❌",
+      "⚠️"
+    ]
+  },
+  "whiteListMode": {
+    "enable": true,
+    "whiteListIds": [
+      "100001611578438"
+    ],
+    "notes": "if you enable this feature, only the ids in the whiteListIds list can use the bot"
+  },
+  "whiteListModeThread": {
+    "enable": true,
+    "whiteListThreadIds": [
+      "1616355276437125"
+    ],
+    "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
+    "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
+  },
+  "antiInbox": false,
+  "notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
   "dashBoard": {
     "enable": false,
     "expireVerifyCode": 300000,
@@ -79,7 +78,7 @@
   },
   "serverUptime": {
     "enable": false,
-    "port": 3001,
+    "port": 3000,
     "socket": {
       "enable": true,
       "channelName": "uptime",
