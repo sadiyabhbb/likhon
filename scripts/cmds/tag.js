@@ -1,43 +1,36 @@
-const config = {
-        name: "tag",
-        version: "1.6.9",
-        author: "Dipto",
-        credits: "Dipto",
-        countDown: 0,
-        role: 0,
-        hasPermission: 0,
-        description: "Tag user",
-        category: "tag",
-        commandCategory: "tag",
-        guide: "{pn} [reply/mention]",
-        usages: "reply or mention"
-    };
+const cfg = {
+  name: "tag",
+  version: "2.0",
+  author: "ArYAN",
+  countDown: 0,
+  role: 0,
+  description: "Tag a user",
+  category: "social",
+  guide: { en: "{p}{n} [reply/mention] <text>" }
+};
 
-const onStart = async ({ api, args, event }) => {
-       try {
-       const ID = event.messageReply?.senderID || args[0] || event.senderID;
-       const mentionedUser = await api.getUserInfo(ID);
-       if (mentionedUser && mentionedUser[ID]) {
-       const userName = mentionedUser[ID].name;
-       const text = args.join(" ");
-       await api.sendMessage({
-        body: `${userName} ${text}`,
-        mentions: [{
-            tag: userName,
-            id: ID 
-         }]
-       }, event.threadID, event.messageID);
-     } else {
-       api.sendMessage("Reply to a message to tag...", event.threadID, event.messageID);
-       }
-    } catch (error) {
-        console.log(error);
-        api.sendMessage(`Error: ${error.message}`, event.threadID, event.messageID);
-   }
-  };
+async function onStart({ api, event, args }) {
+  try {
+    const a = event.messageReply?.senderID || args[0] || event.senderID;
+    const b = await api.getUserInfo(a);
+    if (!b || !b[a]) return api.sendMessage("⚠️ Reply or mention someone to tag.", event.threadID, event.messageID);
+
+    const c = b[a].name;
+    const d = args.join(" ") || "";
+    api.sendMessage(
+      {
+        body: `${c} ${d}`,
+        mentions: [{ tag: c, id: a }]
+      },
+      event.threadID,
+      event.messageID
+    );
+  } catch (e) {
+    api.sendMessage("❌ Error: " + e.message, event.threadID, event.messageID);
+  }
+}
 
 module.exports = {
-  config, 
-  onStart,
-  run: onStart
+  config: cfg,
+  onStart
 };
