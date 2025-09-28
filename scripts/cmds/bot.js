@@ -1,57 +1,21 @@
-const axios = require("axios");
-
 module.exports = {
   config: {
     name: "bot",
-    version: "2.5",
-    author: "Nazrul | Fixed By LIKHON AHMED",
+    version: "1.0",
+    author: "Nazrul", //don’t change author!
     countDown: 5,
     role: 0,
-    description: "chat with bot using API + random replies",
-    category: "chat",
+    description: "chat with bot",
+    category: "what",
     guide: {
-      en: "{p}bot <message>"
+      en: "{p}{n}"
     }
   },
-
-  onStart: async ({ api, event, args, usersData }) => {
-    const data = await usersData.get(event.senderID);
-    const name = data.name || "Friend";
-
-    const userMsg = args.join(" ");
-    if (!userMsg) {
-      return api.sendMessage("Example: /bot hi", event.threadID);
-    }
-
-    try {
-      const url = `http://65.109.80.126:20392/sim?type=ask&ask=${encodeURIComponent(userMsg)}`;
-      const res = await axios.get(url);
-      const replyText = res.data?.data?.msg || "🥲 আমি কিছু বুঝতে পারলাম না।";
-
-      return api.sendMessage(
-        `‎╭────────────❍\n╰➤ 👤 𝐃𝐞𝐚𝐫『 ${name} 』,\n╰➤ 🗣 ${replyText}\n╰─────────────────➤`,
-        event.threadID,
-        event.messageID
-      );
-    } catch (err) {
-      return api.sendMessage("⚠ API error: " + err.message, event.threadID);
-    }
-  },
-
+  onStart: async ({}) => {},
   onChat: async ({ api, event, usersData }) => {
-    const text = event.body?.trim();
-    if (!text) return;
-
-    
-    if (text.startsWith("/")) return;
-
-    
-    if (/^\d+$/.test(text) || text.length === 1) return;
-
     const data = await usersData.get(event.senderID);
-    const name = data.name || "Friend";
-
-    const randomMessages = [
+    const name = data.name || "Darling";
+    const messages = [
       "এতো বট বট করলে লিভ নিবো কিন্তু 😒",
       "সাদা সাদা কালা কালা আমি মানুষ অনেক ভালা 😁",
       "হুম জান বলো শুনছি...😗",
@@ -77,38 +41,21 @@ module.exports = {
       "তুমি কি আমাকে ডেকেছো...? 😇"
     ];
 
-    
-    if (event.type === "message_reply" && event.messageReply?.senderID === api.getCurrentUserID()) {
-      try {
-        const url = `http://65.109.80.126:20392/sim?type=ask&ask=${encodeURIComponent(text)}`;
-        const res = await axios.get(url);
-        const replyText = res.data?.data?.msg || "🥲 আমি কিছু বুঝতে পারলাম না।";
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
-        return api.sendMessage(
-          `‎╭────────────❍\n╰➤ 👤 𝐃𝐞𝐚𝐫『 ${name} 』,\n╰➤ 🗣 ${replyText}\n╰─────────────────➤`,
-          event.threadID,
-          event.messageID
-        );
-      } catch (err) {
-        return api.sendMessage("⚠ API error: " + err.message, event.threadID);
-      }
-    }
+    const nl = event.body.toLowerCase();
 
-    
-    const lowerText = text.toLowerCase();
     if (
-      lowerText.includes("bot") ||
-      lowerText.includes("বট") ||
-      lowerText.includes("robot") ||
-      lowerText.includes("রোবট")
+      nl.startsWith("bott") ||
+      nl.startsWith("bot") ||
+      nl.startsWith("রোবট") ||
+      nl.startsWith("বট") ||
+      nl.startsWith("robot")
     ) {
-      const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
-
-      return api.sendMessage(
-        `‎╭────────────❍\n╰➤ 👤 𝐃𝐞𝐚𝐫『 ${name} 』,\n╰➤ 🗣 ${randomMessage}\n╰─────────────────➤`,
-        event.threadID,
-        event.messageID
-      );
+      const response = {
+        body: `‎╭────────────❍\n╰➤ 👤 𝐃𝐞𝐚𝐫『 ${name} 』,\n╰➤ 🗣 ${randomMessage}\n╰─────────────────➤`
+      };
+      return api.sendMessage(response, event.threadID, event.messageID);
     }
   }
 };
