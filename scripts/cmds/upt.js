@@ -15,7 +15,8 @@ module.exports = {
   },
 
   onStart: async function({ message, event, usersData, threadsData, api }) {
-    if (this.config.author !== 'xnil') {
+    
+    if (module.exports.config.author !== 'xnil') {
       return message.reply("⚠ Unauthorized author change detected. Command execution stopped.");
     }
 
@@ -41,7 +42,7 @@ module.exports = {
       const diskTotal = execSync("df -h / | tail -1 | awk '{print $2}'").toString().trim();
       const diskFree = execSync("df -h / | tail -1 | awk '{print $4}'").toString().trim();
 
-      const linuxVersion = execSync("cat /etc/os-release | grep 'PRETTY_NAME' | cut -d= -f2").toString().trim().replace(/"/g, '');
+      const linuxVersion = execSync("cat /etc/os-release | grep 'PRETTY_NAME' | cut -d= -f2").toString().trim().replace(/\"/g, '');
       const nodeVersion = process.version;
 
       const endTime = Date.now();
@@ -67,9 +68,11 @@ module.exports = {
         `🆓 Free Memory: ${freeMemory} MB\n` +
         `⚙ CPU Model: ${cpuModel}\n` +
         `🔥 CPU Usage: ${cpuUsage}%\n` +
+        `💽 CPU Cores: ${cpuCores}\n` +
         `💽 Disk Usage: ${diskUsage} (Total: ${diskTotal}, Free: ${diskFree})\n` +
         `🖥 Linux Version: ${linuxVersion}\n` +
-        `📦 Node.js Version: ${nodeVersion}`
+        `📦 Node.js Version: ${nodeVersion}\n\n` +
+        `${mediaBanStatus}\n${uptimeResponse}`
       ];
 
       const loadingFrames = [
