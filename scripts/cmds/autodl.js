@@ -4,7 +4,7 @@ const request = require("request");
 
 module.exports = {
   config: {
-    name: "auto",
+    name: "autodl",
     version: "0.0.1",
     author: "ArYAN",
     countDown: 5,
@@ -41,7 +41,7 @@ module.exports = {
           api.setMessageReaction("✅", event.messageID, () => {}, true);
           api.sendMessage(
             {
-              body: "════『 AUTODL 』════\n\n✨ Here's your video! ✨",
+              body: "",
               attachment: fs.createReadStream("video.mp4")
             },
             threadID,
