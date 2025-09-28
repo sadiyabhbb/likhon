@@ -19,6 +19,26 @@
 
 const { spawn } = require("child_process");
 const log = require("./logger/log.js");
+const http = require("http");
+
+// Simple HTTP server (health check)
+const PORT = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+	// Basic health endpoint
+	if (req.url === "/health" || req.url === "/") {
+		res.writeHead(200, { "Content-Type": "text/plain" });
+		return res.end("OK");
+	}
+
+	// Default response for any other path
+	res.writeHead(200, { "Content-Type": "text/plain" });
+	res.end("Goat-Bot is running");
+});
+
+server.listen(PORT, () => {
+	log.info(`HTTP server listening on port ${PORT}`);
+});
 
 function startProject() {
 	const child = spawn("node", ["Goat.js"], {
