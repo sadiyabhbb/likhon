@@ -35,10 +35,10 @@
     "intervalGetNewCookie": 1440
   },
   "adminBot": [
-    "100001611578438"
+    "61572915213085"
   ],
   "mainAdmin": [
-    "100001611578438"
+    "61572915213085"
   ],
   "adminOnly": {
     "enable": false,
@@ -58,14 +58,14 @@
   "whiteListMode": {
     "enable": true,
     "whiteListIds": [
-      "100001611578438"
+      "61572915213085"
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds list can use the bot"
   },
   "whiteListModeThread": {
     "enable": true,
     "whiteListThreadIds": [
-      "1616355276437125"
+      "8174291506001802"
     ],
     "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
     "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
