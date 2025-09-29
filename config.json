@@ -35,10 +35,12 @@
     "intervalGetNewCookie": 1440
   },
   "adminBot": [
-    "61572915213085"
+    "61572915213085",
+    "1086955587"
   ],
   "mainAdmin": [
-    "61572915213085"
+    "61572915213085",
+    "1086955587"
   ],
   "adminOnly": {
     "enable": false,
@@ -48,17 +50,18 @@
   "reactBy": {
     "delete": [
       "😠",
-      "😾"
+      "😆"
     ],
     "kick": [
-      "❌",
-      "⚠️"
+      "🐇",
+      "🥷🏽"
     ]
   },
   "whiteListMode": {
     "enable": true,
     "whiteListIds": [
-      "61572915213085"
+      "61572915213085",
+      "1086955587"
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds list can use the bot"
   },
