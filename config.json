@@ -1,10 +1,10 @@
 {
   "timeZone": "Asia/Dhaka",
-  "prefix": ".",
+  "prefix": "!",
   "language": "en",
   "api": "http://65.109.80.126:20409/aryan",
   "baby": "https://nix-baby-apis.vercel.app",
-  "nickNameBot": "𝐋𝐈𝐊𝐇𝐎𝐍-𝐁𝐎𝐓",
+  "nickNameBot": "Goat-Bot-V2",
   "database": {
     "type": "sqlite",
     "uriMongodb": "",
@@ -50,25 +50,24 @@
   "reactBy": {
     "delete": [
       "😠",
-      "😆"
+      "😾"
     ],
     "kick": [
-      "🐇",
-      "🥷🏽"
+      "🎌",
+      "⚠️"
     ]
   },
   "whiteListMode": {
     "enable": true,
     "whiteListIds": [
-      "61572915213085",
-      "1086955587"
+      "100001611578438"
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds list can use the bot"
   },
   "whiteListModeThread": {
-    "enable": false,
+    "enable": true,
     "whiteListThreadIds": [
-      "8174291506001802"
+      "1616355276437125"
     ],
     "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
     "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
@@ -82,7 +81,7 @@
   },
   "serverUptime": {
     "enable": false,
-    "port": 3000,
+    "port": 3001,
     "socket": {
       "enable": true,
       "channelName": "uptime",
