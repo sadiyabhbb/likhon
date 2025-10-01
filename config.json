@@ -1,6 +1,6 @@
 {
   "timeZone": "Asia/Dhaka",
-  "prefix": "!",
+  "prefix": ".",
   "language": "en",
   "api": "http://65.109.80.126:20409/aryan",
   "baby": "https://nix-baby-apis.vercel.app",
@@ -60,14 +60,15 @@
   "whiteListMode": {
     "enable": true,
     "whiteListIds": [
-      "100001611578438"
+      "61572915213085",
+      "1086955587"
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds list can use the bot"
   },
   "whiteListModeThread": {
-    "enable": true,
+    "enable": false,
     "whiteListThreadIds": [
-      "1616355276437125"
+      "23879401505060726"
     ],
     "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
     "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
